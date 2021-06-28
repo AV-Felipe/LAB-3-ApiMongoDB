@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\aerog\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\aerog\\.nuget\\packages"
+    ]
+  }
+}
