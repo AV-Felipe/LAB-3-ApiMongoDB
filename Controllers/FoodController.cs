@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using CrudMongo.Models;
 using CrudMongo.Models.Entities;
 using CrudMongo.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 
 namespace CrudMongo.Controllers
 {
-    
+
     [ApiController]
     [Route("api/[controller]")]
     public class FoodController : ControllerBase
@@ -24,19 +21,25 @@ namespace CrudMongo.Controllers
             _foodServ = foodService;
         }
 
+        //List all food elements
         [HttpGet]
-        public ActionResult<List<Food>> Read() => _foodServ.Read();
+        public ActionResult<List<Food>> Read()
+        {
+            return Ok(_foodServ.Read());
+        }
+        
 
-        [HttpGet("{id:length(24)}", Name = "ReadFood")]
+        //find an especific food element by its custom foodId
+        [HttpGet("{id:guid}")]
         public ActionResult<Food> Find(Guid id)
         {
             var food = _foodServ.Find(id);
             if (food == null) return NotFound();
-            return food;
+            return Ok(food);
         }
 
         
-
+        //creates a new food element
         [HttpPost]
         public ActionResult<Food> Create(FoodInputDTO food)
         {
@@ -45,8 +48,9 @@ namespace CrudMongo.Controllers
         }
         
 
-        [HttpPut("{id:length(24)}")]
-        public IActionResult Update(Guid id, Food foodIn)
+        //updates all fields of a food element
+        [HttpPut("{id:guid}")]
+        public ActionResult Update([FromRoute] Guid id, FoodInputDTO foodIn)
         {
             var food = _foodServ.Find(id);
 
@@ -54,10 +58,11 @@ namespace CrudMongo.Controllers
 
             _foodServ.Update(id, foodIn);
 
-            return NoContent();
+            return Ok();
         }
 
-        [HttpDelete("{id:length(24)}")]
+        //deletes one food element
+        [HttpDelete("{id:guid}")]
         public IActionResult Delete(Guid id)
         {
             var food = _foodServ.Find(id);
@@ -66,7 +71,7 @@ namespace CrudMongo.Controllers
 
             _foodServ.Delete(food.FoodId);
 
-            return NoContent();
+            return Ok();
         }
 
         

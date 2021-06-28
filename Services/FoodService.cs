@@ -18,6 +18,7 @@ namespace CrudMongo.Services
             _food = database.GetCollection<Food>("Foods"); // busca a colection Foods no banco e injeta no objeto Food
         }
 
+        //creates a new Food element
         public Food Create(FoodInputDTO food)
         {
             var foodInsert = new Food
@@ -33,21 +34,31 @@ namespace CrudMongo.Services
             return foodInsert;
         }
 
-        //lista todas as entradas
-        //public IList<Food> Read() =>
-        //    _food.Find(sub => true).ToList();
+        //List all food elements
         public List<Food> Read() => _food.Find(sub => true).ToList();
 
         //busca um id (single) ou null se não achar nenhum (default)
-        public Food Find(Guid id) =>
-            _food.Find(sub => sub.FoodId == id).SingleOrDefault();
+        public Food Find(Guid id) => _food.Find(sub => sub.FoodId == id).SingleOrDefault();
 
         //esse é o put, atualiza todos os campos do item
-        public void Update(Guid id, Food food) =>
-            _food.ReplaceOne(sub => sub.FoodId == food.FoodId, food );
+        public void Update(Guid id, FoodInputDTO foodReplacement) 
+        {
+            var food = Find(id);
+
+            if(food != null)
+            {
+                food.FoodName = foodReplacement.FoodName;
+                food.FoodGroup = foodReplacement.FoodGroup;
+                food.Created = food.Created;
+                food.LastUpdated = DateTime.Now;
+            }
+                        
+            _food.ReplaceOne(foodOnDb => foodOnDb.FoodId == food.FoodId, food );
+        }
+        
         
         public void Delete(Guid id) =>
-            _food.DeleteOne(sub => sub.FoodId == id);
+            _food.DeleteOne(foodOnDb => foodOnDb.FoodId == id);
 
     }
 }
