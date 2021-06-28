@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using CrudMongo.Models;
 using CrudMongo.Models.Entities;
 using CrudMongo.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +28,7 @@ namespace CrudMongo.Controllers
         public ActionResult<List<Food>> Read() => _foodServ.Read();
 
         [HttpGet("{id:length(24)}", Name = "ReadFood")]
-        public ActionResult<Food> Find(string id)
+        public ActionResult<Food> Find(Guid id)
         {
             var food = _foodServ.Find(id);
             if (food == null) return NotFound();
@@ -37,15 +38,15 @@ namespace CrudMongo.Controllers
         
 
         [HttpPost]
-        public ActionResult<Food> Create(Food food)
+        public ActionResult<Food> Create(FoodInputDTO food)
         {
             _foodServ.Create(food);
-            return CreatedAtRoute("ReadFood", new {id = food.Id.ToString()}, food);
+            return Ok(food);
         }
         
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Food foodIn)
+        public IActionResult Update(Guid id, Food foodIn)
         {
             var food = _foodServ.Find(id);
 
@@ -57,13 +58,13 @@ namespace CrudMongo.Controllers
         }
 
         [HttpDelete("{id:length(24)}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(Guid id)
         {
             var food = _foodServ.Find(id);
 
             if (food == null) return NotFound();
 
-            _foodServ.Delete(food.Id);
+            _foodServ.Delete(food.FoodId);
 
             return NoContent();
         }
