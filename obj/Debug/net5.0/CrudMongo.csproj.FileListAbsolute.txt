@@ -7,12 +7,6 @@ C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\CrudMongo.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\ref\CrudMongo.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\CrudMongo.pdb
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\DnsClient.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\MongoDB.Bson.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\MongoDB.Driver.dll
@@ -22,7 +16,6 @@ C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\SharpCompress.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
@@ -45,3 +38,4 @@ C:\workspace\api-mongo-CRUD\CrudMongo\obj\Debug\net5.0\CrudMongo.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\obj\Debug\net5.0\ref\CrudMongo.dll
 C:\workspace\api-mongo-CRUD\CrudMongo\obj\Debug\net5.0\CrudMongo.pdb
 C:\workspace\api-mongo-CRUD\CrudMongo\obj\Debug\net5.0\CrudMongo.genruntimeconfig.cache
+C:\workspace\api-mongo-CRUD\CrudMongo\bin\Debug\net5.0\CrudMongo.xml
