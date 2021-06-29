@@ -63,7 +63,7 @@ namespace CrudMongo.Controllers
 
         //deletes one food element
         [HttpDelete("{id:guid}")]
-        public IActionResult Delete(Guid id)
+        public ActionResult Delete([FromRoute]Guid id)
         {
             var food = _foodServ.Find(id);
 
@@ -73,6 +73,16 @@ namespace CrudMongo.Controllers
 
             return Ok();
         }
+
+        //teste adicionar benefício
+        [HttpPatch("{id:guid}")]
+        public ActionResult AddBenefit([FromRoute]Guid id, string benefit)
+        {
+            var food = Find(id);
+            _foodServ.AddBenefit(id, benefit);
+            return Ok();
+        }
+
 
         
     }

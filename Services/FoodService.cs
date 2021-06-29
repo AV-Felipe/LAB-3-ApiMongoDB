@@ -26,6 +26,7 @@ namespace CrudMongo.Services
                 FoodId = Guid.NewGuid(),
                 FoodName = food.FoodName,
                 FoodGroup = food.FoodGroup,
+                Benefits = food.Benefits.Split(" "),
                 Created = DateTime.Now,
                 LastUpdated = DateTime.Now
 
@@ -49,6 +50,7 @@ namespace CrudMongo.Services
             {
                 food.FoodName = foodReplacement.FoodName;
                 food.FoodGroup = foodReplacement.FoodGroup;
+                food.Benefits = foodReplacement.Benefits.Split(" ");
                 food.Created = food.Created;
                 food.LastUpdated = DateTime.Now;
             }
@@ -57,8 +59,25 @@ namespace CrudMongo.Services
         }
         
         
-        public void Delete(Guid id) =>
-            _food.DeleteOne(foodOnDb => foodOnDb.FoodId == id);
+        public void Delete(Guid id) => _food.DeleteOne(foodOnDb => foodOnDb.FoodId == id);
+
+        public void AddBenefit (Guid id, string benefit)
+        {
+            var food = Find(id);
+            string foodString = benefit;
+                        
+            if(food != null)
+            {
+                foreach(string x in food.Benefits)
+                {
+                    foodString = x + " " + foodString;
+                    
+                }
+                FoodInputDTO foodReplace = new FoodInputDTO{FoodName=food.FoodName, FoodGroup=food.FoodGroup, Benefits=foodString};
+                Update(id, foodReplace);
+            }
+            
+        }
 
     }
 }
