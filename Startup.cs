@@ -14,6 +14,8 @@ using Microsoft.OpenApi.Models;
 using CrudMongo.Models;
 using Microsoft.Extensions.Options;
 using CrudMongo.Services;
+using System.Reflection;
+using System.IO;
 
 namespace CrudMongo
 {
@@ -39,7 +41,12 @@ namespace CrudMongo
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CrudMongo", Version = "v1" });
+                
+                var basePath = AppDomain.CurrentDomain.BaseDirectory;
+                var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
+                c.IncludeXmlComments(Path.Combine(basePath, fileName));
             });
         }
 
